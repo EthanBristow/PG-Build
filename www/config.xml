@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns   = "http://www.w3.org/ns/widgets"
+    xmlns:gap   = "http://phonegap.com/ns/1.0"
+    id          = "com.phonegap.example"
+    version     = "1.0.1" >
+
+  <name>1.0.1</name>
+
+  <description>
+      Notes, Reminders and Lists.
+  </description>
+
+  <author href="https://build.phonegap.com" email="BRIE1_15@uni.worc.ac.uk">
+      Ethan Bristow
+  </author>
+    
+    <content src="index.html" />
+    
+    <plugin name="org.apache.cordova.device" />
+    <plugin name="de.appplant.cordova.plugin.local-notification" />
+
+</widget>

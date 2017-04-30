@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>NRL</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css"> <!-- Link to main style sheet -->
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>-->
+    <script src="js/javascript.js"></script>
+</head>
+    
+    <body onload="onLoad()">
+
+        <!-- PAGE 1 -->
+        <div data-role="page" id="article1">
+            <div data-role="header" data-theme="a" data-position="fixed">
+                <h1>Notes</h1>
+            </div>
+            
+            <div data-role="content">
+                <div id="addContainer">
+                    <textarea id="noteInput" class="textarea" placeholder="Add your note here, then click 'Add Note'." rows="10" cols="50"></textarea>
+                    <button id="addNoteBtn" data-role="button">Add Note</button>
+                </div>
+                
+                <div id="displayContainer">
+                </div>
+                
+                <div id="controlContainer">
+                    <textarea id="noteNumberInput" placeholder="Note number"></textarea>
+                    <p>(After deleting a note, you can edit that note number if you'd like to add another into the same position!)</p>
+                    <textarea id="noteEditInput" placeholder="Type here, then click edit to overwrite the note of the number you've selected."></textarea>
+                    <div id="controlButtons">
+                        <button id="editNoteBtn" data-role="button">Edit</button>
+                        <button id="deleteNoteBtn" data-role="button">Delete</button>
+                    </div>
+                </div>    
+            </div>
+            
+            <div id="global-footer" data-role="footer" data-position="fixed" data-theme="a" data-id="main-footer" class="ui-bar">
+                <div id="footer-container">
+                    <button id="notespagebtn" class="notespagebtn" data-role="none">Notes</button>
+                    <button id="reminderspagebtn" class="reminderspagebtn" data-role="none">Reminders</button>
+                    <button id="listspagebtn" class="listspagebtn" data-role="none">Checklist</button>
+                </div>    
+            </div> 
+            
+        </div>
+
+        
+        <!-- PAGE 2 -->
+        <div data-role="page" id="article2">
+            <div data-role="header" data-theme="a" data-position="fixed">
+                <a href="#article1" data-icon="home" data-iconpos="notext">Home</a>
+                <h1>Reminders</h1>
+            </div>
+            
+            <div data-role="main" class="ui-content">
+                <p>
+                    Enter title and message for the reminder:
+                    <input type="text" id="title" placeholder="Title" />
+                    <input type="text" id="message" placeholder="Message" />
+                    Enter date and time to trigger reminder:
+                    <input type="date" id="date" placeholder="Change this to required format"/>
+                    <input type="time" id="time" placeholder="Change this to required format"/>
+                    <button id="addReminderBtn" data-role="button">Add Reminder</button>
+                </p>
+            </div>
+            
+            <div id="global-footer" data-role="footer" data-position="fixed" data-theme="a" data-id="main-footer" class="ui-bar">
+                <div id="footer-container">
+                    <button id="notespagebtn" class="notespagebtn" data-role="none">Notes</button>
+                    <button id="reminderspagebtn" class="reminderspagebtn" data-role="none">Reminders</button>
+                    <button id="listspagebtn" class="listspagebtn" data-role="none">Checklist</button>
+                </div> 
+            </div> 
+            
+        </div>
+            
+        
+        <!-- PAGE 3 -->
+        <div data-role="page" id="article3">
+            <div data-role="header" data-theme="a" data-position="fixed">
+                <a href="#article1" data-icon="home" data-iconpos="notext">Home</a>
+                <h1>Checklist</h1>
+            </div>
+            
+            <div data-role="content">
+                
+                    <div id="listContainer">
+                        <form id="listForm">
+                            <input type="submit" value="Add">
+                            <input id="listInput" class="textarea" placeholder="Add your list item here, then click submit.">
+                            <div id="checkboxContainer">
+                            </div>
+                        </form>
+                        
+                    </div>
+        
+            </div>
+            
+            <div id="global-footer" data-role="footer" data-position="fixed" data-theme="a" data-id="main-footer" class="ui-bar">
+                <div id="footer-container">
+                    <button id="notespagebtn" class="notespagebtn" data-role="none">Notes</button>
+                    <button id="reminderspagebtn" class="reminderspagebtn" data-role="none">Reminders</button>
+                    <button id="listspagebtn" class="listspagebtn" data-role="none">Checklist</button>
+                </div> 
+            </div> 
+            
+        </div>
+       
+    </body>
+    
+</html>

@@ -1,0 +1,195 @@
+#addContainer {
+    margin: 20px 20px 50px 20px;
+}
+
+#displayContainer {
+    margin: 20px 20px 20px 20px;
+}
+
+#listContainer {
+    margin: 20px 20px 20px 20px;
+}
+
+#checkboxContainer {
+    margin: 0px 0px 20px 0px;
+    background-color: #96c56f;
+    color: black;
+    font-size: 18px;
+    border-radius: 5px;
+    word-wrap: break-all;
+}
+
+.inputContainer {
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+}
+
+.noteDisplay {
+    display: inline-block;
+    font-size: 18px;
+    color: black;
+    background-color: #96c56f;
+    width: 100%;
+    padding: 5px 0px 5px 5px;
+    border: solid 2px black;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    word-wrap: break-all;
+}
+
+#controlContainer {
+    margin: 20px 20px 20px 20px;
+}
+
+#controlContainer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+#controlButtons {
+}
+
+#noteNumberInput {
+    display: inline;
+    width: 7%;
+    min-width: 110px;
+}
+
+#editNumberInput {
+    display: inline;
+    width: 93%;
+    padding-left: 2%;
+}
+
+#editNoteButton {
+}
+
+#deleteNoteButton {
+}
+
+#global-footer {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    height: 30px;
+    align-items: center;
+}
+        
+#footer-container {
+    display: flex;
+    width: 60%;
+    height: 100%;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.notespagebtn {
+    display: inline-block;
+    width: 33.3%;
+    height: 80%;
+    font-family: 'Open Sans Condensed', sans-serif;;
+    font-size: 100%;
+    color: white;
+    vertical-align: middle;
+    border: none;
+    border-radius: 1px;
+    margin-left: 1px;
+    margin-right: 1px;
+    background: #87e0fd; /* Old browsers */
+    background: -moz-linear-gradient(top, #87e0fd 0%, #53cbf1 50%, #05abe0 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #87e0fd 0%,#53cbf1 50%,#05abe0 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #87e0fd 0%,#53cbf1 50%,#05abe0 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    transition: all 0.5s ease;
+}
+
+.reminderspagebtn {
+    display: inline-block;
+    width: 33.3%;
+    min-width: 90px;
+    height: 80%;
+    font-family: 'Open Sans Condensed', sans-serif;;
+    font-size: 100%;
+    color: white;
+    vertical-align: middle;
+    border: none;
+    border-radius: 1px;
+    margin-left: 1px;
+    margin-right: 1px;
+    background: #87e0fd; /* Old browsers */
+    background: -moz-linear-gradient(top, #87e0fd 0%, #53cbf1 50%, #05abe0 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #87e0fd 0%,#53cbf1 50%,#05abe0 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #87e0fd 0%,#53cbf1 50%,#05abe0 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    transition: all 0.5s ease;
+}
+
+.listspagebtn {
+    display: inline-block;
+    width: 33.3%;
+    min-width: 90px;
+    height: 80%;
+    font-family: 'Open Sans Condensed', sans-serif;;
+    font-size: 100%;
+    color: white;
+    vertical-align: middle;
+    border: none;
+    border-radius: 1px;
+    margin-left: 1px;
+    margin-right: 1px;
+    background: #87e0fd; /* Old browsers */
+    background: -moz-linear-gradient(top, #87e0fd 0%, #53cbf1 50%, #05abe0 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #87e0fd 0%,#53cbf1 50%,#05abe0 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #87e0fd 0%,#53cbf1 50%,#05abe0 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    transition: all 0.5s ease;
+}
+
+.currentPage {
+    background: darkgray !important;
+    transition: all 0.5s ease;
+}
+
+
+/* GLOBAL CLASSES */
+label.inline {
+    margin: 0px !important;
+}
+
+.inline {
+    display: inline;
+}
+
+.hide {
+    display: none !important;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    margin-right: 20px;
+}
+
+.closeBtn {
+    width: 15px;
+    height: 15px;
+    margin-left: 100px;
+    background-color: red;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.textarea {
+    width: 100%;
+    height: 100%;
+    font: 1em arial;
+    color: rgba(50, 82, 50, 1.0);
+}
+
+.textarea:focus {
+    color: rgba(50, 82, 50, 1.0);
+    border: 2px solid #96c56f;
+    box-shadow: 0px 1px 1px #888888;
+}
