@@ -6,10 +6,14 @@ function onDeviceReady() {
     alert("deviceready");
     
     // cordova.plugins.notification.local is now available
-    var addReminderBtn = document.getElementById("addReminderBtn"),
+    var addReminderBtn = document.getElementById("addRemBtn"),
+        editRemBtn = document.getElementById("addRemBtn"),
+        deleteRemBtn = document.getElementById("deleteRemBtn"),
         remCount = localStorage.getItem("remCount");
     
     addReminderBtn.addEventListener("click", addReminder);
+    editRemBtn.addEventListener("click", editReminder);
+    deleteRemBtn.addEventListener("click", deleteReminder);
     
     //Set remCount to 0 if null
     remCount = localStorage.getItem("remCount");
@@ -20,13 +24,11 @@ function onDeviceReady() {
     //Add a reminder
     function addReminder() {
         alert("Add functions runs");
-        
 
         var date = document.getElementById("date").value,
             time = document.getElementById("time").value,
             title = document.getElementById("title").value,
             message = document.getElementById("message").value,
-            id = remCount,
             slctdTime = new Date((date + " " + time).replace(/-/g, "/")).getTime();
         
         if (date === "" || time === "" || title === "" || message === "") {
@@ -34,6 +36,7 @@ function onDeviceReady() {
             return;
         } else {
             remCount++;
+            var id = remCount;
             
             //generate a time to post notification
             slctdTime = new Date(slctdTime);
@@ -49,6 +52,7 @@ function onDeviceReady() {
             //Display new reminder
             $("<div />")
                 .attr("id", "rem" + remCount + "container")
+                .attr("class", "reminder")
                 .text(id + ": " + title + " " + message + " " + slctdTime)
                 .appendTo("#remContainer");
 
@@ -58,7 +62,49 @@ function onDeviceReady() {
             localStorage.setItem("Rem" + id + "message", message);
             localStorage.setItem("Rem" + id + "date", slctdTime);
         } 
-    } //Add reminder
+    }
+    
+    //Edit a reminder
+    function editReminder() {
+        alert("Edit functions runs");
+        
+        var remId = $("#remIdInput").val(),
+            date = document.getElementById("date").value,
+            time = document.getElementById("time").value,
+            title = document.getElementById("title").value,
+            message = document.getElementById("message").value,
+            slctdTime = new Date((date + " " + time).replace(/-/g, "/")).getTime();
+        slctdTime = new Date(slctdTime);
+        
+        if (isNaN(remId)) {
+            alert("Please only enter the ID e.g. 1, 2..14 etc.");
+            return;
+        }
+        if (date === "" || time === "" || title === "" || message === "") {
+            alert("Please enter all details");
+            return;
+        } else {
+            //update notification    
+            cordova.plugins.notification.local.update({
+                id: remId,
+                title: title,
+                text: message,
+                at: slctdTime
+            });
+            
+            //Update info in local storage
+            localStorage.setItem("Rem" + remId + "title", title);
+            localStorage.setItem("Rem" + remId + "message", message);
+            localStorage.setItem("Rem" + remId + "date", slctdTime);
+            
+        }
+    }
+    
+    // Delete a reminder
+    function deleteReminder() {
+        alert("Delete functions runs");
+        
+    }
     
 } //Device ready
 
@@ -351,9 +397,6 @@ $(document).ready(function () {
     addnotebtn.addEventListener("click", addNotes);
     editNoteBtn.addEventListener("click", editNotes);
     deleteNoteBtn.addEventListener("click", deleteNotes);
-    
-    //Reminders
-    
     
     //Lists
     $(document).on('click', '.closeBtn', deleteItem);

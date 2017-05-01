@@ -67,14 +67,20 @@
                         <input type="text" id="title" placeholder="Title" />
                         <input type="text" id="message" placeholder="Message" />
                         Enter date and time to trigger reminder:
-                        <input type="date" id="date" placeholder="Change this to required format"/>
-                        <input type="time" id="time" placeholder="Change this to required format"/>
-                        <button id="addReminderBtn" data-role="button">Add Reminder</button>
+                        <input type="date" id="date" placeholder="Date"/>
+                        <input type="time" id="time" placeholder="Time"/>
+                        <button id="addRemBtn" data-role="button">Add Reminder</button>
                     </p>
                 </div>
                 
+                <div id="controlContainer">
+                    <textarea id="remIdInput" placeholder="Reminder ID"></textarea>
+                    <button id="editRemBtn" data-role="button">Edit Reminder</button>
+                    <button id="deleteRemBtn" data-role="button">Cancel Reminder</button>
+                </div>
+                
                 <div id="remContainer">
-            
+                    <h1>Pending reminders</h1>
                 </div>
                 
             </div>
