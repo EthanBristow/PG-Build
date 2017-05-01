@@ -7,7 +7,7 @@ function onDeviceReady() {
     
     // cordova.plugins.notification.local is now available
     var addReminderBtn = document.getElementById("addRemBtn"),
-        editRemBtn = document.getElementById("addRemBtn"),
+        editRemBtn = document.getElementById("editRemBtn"),
         deleteRemBtn = document.getElementById("deleteRemBtn"),
         remCount = localStorage.getItem("remCount");
     
