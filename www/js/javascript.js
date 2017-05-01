@@ -327,16 +327,20 @@ function addReminder() {
         title = document.getElementById("title").value,
         message = document.getElementById("message").value;
     
-    //generate a time to post notification
-    var slctdTime = new Date(time); //current time
-    var notificationTime = new Date(date + " " + slctdTime);
+    if(date == "" || time == "" || title == "" || message == "") {
+        alert("Please enter all details");
+        return;
+    }
     			
+    //generate a time to post notification
+    var slctdTime = new Date((date + " " + time).replace(/-/g, "/")).getTime();
+    slctdTime = new Date(slctdTime);
 
     //setup notification    
     cordova.plugins.notification.local.schedule({ 
     	id: 1,
-        title: "Title test",
-        text: "Message text",
+        title: title,
+        text: message,
         at: notificationTime
    	});
     
