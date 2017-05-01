@@ -53,7 +53,7 @@ function onDeviceReady() {
             $("<div />")
                 .attr("id", "rem" + remCount + "container")
                 .attr("class", "reminder")
-                .text("[ID: " + id + "] - " + title + "   " + message + "   " + slctdTime)
+                .text("[ID: " + id + "] - " + title + ", " + message + ", " + slctdTime)
                 .appendTo("#remContainer");
 
             //Store info in local storage
@@ -98,7 +98,7 @@ function onDeviceReady() {
             localStorage.setItem("Rem" + remId + "date", slctdTime);
             
             //Edit the pending reminders
-            $("#rem" + remId + "container").text("[ID: " + remId + "] - " + title + "   " + message + "   " + slctdTime);
+            $("#rem" + remId + "container").text("[ID: " + remId + "] - " + title + ", " + message + ", " + slctdTime);
         }
     }
     

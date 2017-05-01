@@ -75,12 +75,15 @@
                 
                 <div id="controlContainer">
                     <textarea id="remIdInput" placeholder="Reminder ID"></textarea>
+                    <p>(Enter the reminder ID into this box, fill in the table above and click 'Edit Reminder' to update a scheduled reminder. To cancel a reminder, simply enter the ID and then click 'Cancel Reminder'.)</p>
                     <button id="editRemBtn" data-role="button">Edit Reminder</button>
                     <button id="deleteRemBtn" data-role="button">Cancel Reminder</button>
                 </div>
                 
-                <div id="remContainer">
+                <div id="pendingReminders">
                     <h1>Pending reminders</h1>
+                    <div id="remContainer">
+                    </div>
                 </div>
                 
             </div>
