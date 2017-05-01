@@ -20,7 +20,7 @@ function onDeviceReady() {
     //Add a reminder
     function addReminder() {
         alert("Add functions runs");
-        remCount++;
+        
 
         var date = document.getElementById("date").value,
             time = document.getElementById("time").value,
@@ -32,31 +32,33 @@ function onDeviceReady() {
         if (date === "" || time === "" || title === "" || message === "") {
             alert("Please enter all details");
             return;
-        }
+        } else {
+            remCount++;
+            
+            //generate a time to post notification
+            slctdTime = new Date(slctdTime);
 
-        //generate a time to post notification
-        slctdTime = new Date(slctdTime);
+            //setup notification    
+            cordova.plugins.notification.local.schedule({
+                id: id,
+                title: title,
+                text: message,
+                at: slctdTime
+            });
 
-        //setup notification    
-        cordova.plugins.notification.local.schedule({
-            id: id,
-            title: title,
-            text: message,
-            at: slctdTime
-        });
+            //Display new reminder
+            $("<div />")
+                .attr("id", "rem" + remCount + "container")
+                .text(id + ": " + title + " " + message + " " + slctdTime)
+                .appendTo("#remContainer");
 
-        //Display new reminder
-        $("<div />")
-            .attr("id", "rem" + remCount + "container")
-            .text(id + ": " + title + " " + message + " " + slctdTime)
-            .appendTo("#remContainer");
-        
-        //Store info in local storage
-        localStorage.setItem("RemCount", id);
-        localStorage.setItem("Rem" + id + "title", title);
-        localStorage.setItem("Rem" + id + "message", message);
-        localStorage.setItem("Rem" + id + "date", slctdTime);
-    }
+            //Store info in local storage
+            localStorage.setItem("RemCount", id);
+            localStorage.setItem("Rem" + id + "title", title);
+            localStorage.setItem("Rem" + id + "message", message);
+            localStorage.setItem("Rem" + id + "date", slctdTime);
+        } 
+    } //Add reminder
     
 } //Device ready
 
