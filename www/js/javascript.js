@@ -341,7 +341,7 @@ function addReminder() {
     	id: 1,
         title: title,
         text: message,
-        at: notificationTime
+        at: slctdTime
    	});
     
 }
