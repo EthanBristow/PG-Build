@@ -106,10 +106,12 @@ function onDeviceReady() {
     
     // Delete a reminder
     function deleteReminder() {
-        alert("Delete functions runs");
         
         var remId = $("#remIdInput").val(),
             selectedRem = $("#rem" + remId + "container");
+        
+        cordova.plugins.notification.local.cancel(remId, function() {
+        });
         
         //Remove the note from the page
         selectedRem.remove();
