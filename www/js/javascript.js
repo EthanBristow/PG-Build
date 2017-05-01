@@ -23,7 +23,6 @@ function onDeviceReady() {
     
     //Add a reminder
     function addReminder() {
-        alert("Add functions runs");
 
         var date = document.getElementById("date").value,
             time = document.getElementById("time").value,
@@ -61,12 +60,13 @@ function onDeviceReady() {
             localStorage.setItem("Rem" + id + "title", title);
             localStorage.setItem("Rem" + id + "message", message);
             localStorage.setItem("Rem" + id + "date", slctdTime);
-        } 
+            
+            alert("Reminder added.");
+        }
     }
     
     //Edit a reminder
     function editReminder() {
-        alert("Edit functions runs");
         
         var remId = $("#remIdInput").val(),
             date = document.getElementById("date").value,
@@ -99,12 +99,28 @@ function onDeviceReady() {
             
             //Edit the pending reminders
             $("#rem" + remId + "container").text("[ID: " + remId + "] - " + title + ", " + message + ", " + slctdTime);
+            
+            alert("Reminder edited");
         }
     }
     
     // Delete a reminder
     function deleteReminder() {
         alert("Delete functions runs");
+        
+        var remId = $("#remIdInput").val(),
+            selectedRem = $("#rem" + remId + "container");
+        
+        //Remove the note from the page
+        selectedRem.remove();
+        
+        //Remove note from local storage
+        localStorage.removeItem("remCount" + remId);
+        localStorage.removeItem("Rem" + remId + "title");
+        localStorage.removeItem("Rem" + remId + "message");
+        localStorage.removeItem("Rem" + remId + "date");
+        
+        alert("Reminder cancelled.");
         
     }
     
