@@ -4,17 +4,20 @@ function onLoad() {
 
 function onDeviceReady() {
     alert("deviceready");
+    
     // cordova.plugins.notification.local is now available
-    var addReminderBtn = document.getElementById("addReminderBtn");
+    var addReminderBtn = document.getElementById("addReminderBtn"),
+        remCount = localStorage.getItem("remCount");
+    
     addReminderBtn.addEventListener("click", addReminder);
     
-    //REMINDER
-    var remCount = localStorage.getItem("remCount");
-    
+    //Set remCount to 0 if null
+    remCount = localStorage.getItem("remCount");
     if (remCount === null) {
         remCount = 0;
     }
     
+    //Add a reminder
     function addReminder() {
         alert("Add functions runs");
         remCount++;
@@ -23,19 +26,19 @@ function onDeviceReady() {
             time = document.getElementById("time").value,
             title = document.getElementById("title").value,
             message = document.getElementById("message").value,
-            id = remCount;
+            id = remCount,
+            slctdTime = new Date((date + " " + time).replace(/-/g, "/")).getTime();
         
-        if(date == "" || time == "" || title == "" || message == "") {
+        if (date === "" || time === "" || title === "" || message === "") {
             alert("Please enter all details");
             return;
         }
 
         //generate a time to post notification
-        var slctdTime = new Date((date + " " + time).replace(/-/g, "/")).getTime();
         slctdTime = new Date(slctdTime);
 
         //setup notification    
-        cordova.plugins.notification.local.schedule({ 
+        cordova.plugins.notification.local.schedule({
             id: id,
             title: title,
             text: message,
@@ -52,25 +55,22 @@ function onDeviceReady() {
         localStorage.setItem("RemCount", id);
         localStorage.setItem("Rem" + id + "title", title);
         localStorage.setItem("Rem" + id + "message", message);
-        localStorage.setItem("Rem" + id + "date", slctdTime);        
-
+        localStorage.setItem("Rem" + id + "date", slctdTime);
     }
-}
+    
+} //Device ready
 
 $(document).ready(function () {
     //NOTES
-    var savesnotesbtn = document.getElementById("savenotesbtn");
-    var addnotebtn = document.getElementById("addNoteBtn");
-    var noteNumberInput = document.getElementById("noteNumberInput");
-    var editNoteBtn = document.getElementById("editNoteBtn");
-    var deleteNoteBtn = document.getElementById("deleteNoteBtn");
-    var noteCount = localStorage.getItem("noteCount");  
-    
-    
-    
+    var savesnotesbtn = document.getElementById("savenotesbtn"),
+        addnotebtn = document.getElementById("addNoteBtn"),
+        noteNumberInput = document.getElementById("noteNumberInput"),
+        editNoteBtn = document.getElementById("editNoteBtn"),
+        deleteNoteBtn = document.getElementById("deleteNoteBtn"),
+        noteCount = localStorage.getItem("noteCount"),
     //LISTS
-    var listInput = document.getElementById("listInput");
-    var listCount = localStorage.getItem("listCount");
+        listInput = document.getElementById("listInput"),
+        listCount = localStorage.getItem("listCount");
 
     
     if (noteCount === null) {
@@ -86,22 +86,21 @@ $(document).ready(function () {
     displayList();
     
     //DETECT PAGE CHANGE, EDIT FOOTER
-    $( window ).hashchange(function() {
-        var currentPage = $.mobile.pageContainer.pagecontainer( 'getActivePage' ).attr( 'id' );
-        console.log(currentPage);
-        if (currentPage == "article1") {
+    $(window).hashchange(function () {
+        var currentPage = $.mobile.pageContainer.pagecontainer('getActivePage').attr('id');
+        if (currentPage === "article1") {
             $(".notespagebtn").addClass("currentPage");
             $(".reminderspagebtn").removeClass("currentPage");
             $(".listspagebtn").removeClass("currentPage");
         }
         
-        if (currentPage == "article2") {
+        if (currentPage === "article2") {
             $(".reminderspagebtn").addClass("currentPage");
             $(".notespagebtn").removeClass("currentPage");
             $(".listspagebtn").removeClass("currentPage");
         }
         
-        if (currentPage == "article3") {
+        if (currentPage === "article3") {
             $(".listspagebtn").addClass("currentPage");
             $(".notespagebtn").removeClass("currentPage");
             $(".reminderspagebtn").removeClass("currentPage");
@@ -135,21 +134,21 @@ $(document).ready(function () {
     
     
     //FOOTER NAVIGATION
-    $(".notespagebtn").click(function() {
+    $(".notespagebtn").click(function () {
         $.mobile.changePage("#article1");
         $(".notespagebtn").addClass("currentPage");
         $(".reminderspagebtn").removeClass("currentPage");
         $(".listspagebtn").removeClass("currentPage");
     });
     
-    $(".reminderspagebtn").click(function() {
+    $(".reminderspagebtn").click(function () {
         $.mobile.changePage("#article2");
         $(".reminderspagebtn").addClass("currentPage");
         $(".notespagebtn").removeClass("currentPage");
         $(".listspagebtn").removeClass("currentPage");
     });
     
-    $(".listspagebtn").click(function() {
+    $(".listspagebtn").click(function () {
         $.mobile.changePage("#article3");
         $(".listspagebtn").addClass("currentPage");
         $(".notespagebtn").removeClass("currentPage");
@@ -160,13 +159,12 @@ $(document).ready(function () {
     
     //ADD NOTES
     function addNotes() {
-        if ($("#noteInput").val() == "") {
+        if ($("#noteInput").val() === "") {
             alert("Cannot add an empty note. Please enter your note into the text area and then click 'Add Note'.");
         } else {
             noteCount++;
-            var note = $("#noteInput").val();
-            console.log("Note Count: " + noteCount);
-            var display = document.createElement("div");
+            var note = $("#noteInput").val(),
+                display = document.createElement("div");
             document.getElementById("displayContainer").appendChild(display);
             display.className = "noteDisplay";
             display.id = "note" + noteCount;
@@ -345,7 +343,6 @@ $(document).ready(function () {
     }
     
     
-
     
     //EVENT LISTERNERS
     //Notes
@@ -361,53 +358,6 @@ $(document).ready(function () {
     $("#checkboxContainer").on('change', '.checkbox', boxChanged);
     
 });
-
-
-/*document.addEventListener('deviceready', function () {
-    alert("deviceready");
-    // cordova.plugins.notification.local is now available
-    var addReminderBtn = document.getElementById("addReminderBtn");
-    
-    //ADD REMINDER
-    function addReminder() {
-        alert("Add functions runs");
-        
-        var date = document.getElementById("date").value;
-        var time = document.getElementById("time").value;
-        var title = document.getElementById("title").value;
-        var message = document.getElementById("message").value;
-        
-        cordova.plugins.notifications.local.schedule({
-            id: 1,
-            text: message,
-            title: title,
-            at: date
-        });
-        
-        		
-	//
-    //generate a time to post notification
-    //
-    var currentTime = new Date().getTime(); //current time
-    var notificationTime = new Date(currentTime + 1000); //delayed time  - add 1 second
-    			
-    //
-    //setup notification
-    //
-    
-    cordova.plugins.notification.local.schedule({ 
-    	id: 1,
-        title: "Hey you",
-        text: "This is an example notification",
-        at: notificationTime
-   	});
-    
-}
-    
-    
-    addReminderBtn.addEventListener("click", addReminder);
-    
-}, false); */  
 
 
 
