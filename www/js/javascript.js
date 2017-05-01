@@ -7,6 +7,54 @@ function onDeviceReady() {
     // cordova.plugins.notification.local is now available
     var addReminderBtn = document.getElementById("addReminderBtn");
     addReminderBtn.addEventListener("click", addReminder);
+    
+    //REMINDER
+    var remCount = localStorage.getItem("remCount");
+    
+    if (remCount === null) {
+        remCount = 0;
+    }
+    
+    function addReminder() {
+        alert("Add functions runs");
+        remCount++;
+
+        var date = document.getElementById("date").value,
+            time = document.getElementById("time").value,
+            title = document.getElementById("title").value,
+            message = document.getElementById("message").value,
+            id = remCount;
+        
+        if(date == "" || time == "" || title == "" || message == "") {
+            alert("Please enter all details");
+            return;
+        }
+
+        //generate a time to post notification
+        var slctdTime = new Date((date + " " + time).replace(/-/g, "/")).getTime();
+        slctdTime = new Date(slctdTime);
+
+        //setup notification    
+        cordova.plugins.notification.local.schedule({ 
+            id: id,
+            title: title,
+            text: message,
+            at: slctdTime
+        });
+
+        //Display new reminder
+        $("<div />")
+            .attr("id", "rem" + remCount + "container")
+            .text(id + ": " + title + " " + message + " " + slctdTime)
+            .appendTo("#remContainer");
+        
+        //Store info in local storage
+        localStorage.setItem("RemCount", id);
+        localStorage.setItem("Rem" + id + "title", title);
+        localStorage.setItem("Rem" + id + "message", message);
+        localStorage.setItem("Rem" + id + "date", slctdTime);        
+
+    }
 }
 
 $(document).ready(function () {
@@ -18,8 +66,7 @@ $(document).ready(function () {
     var deleteNoteBtn = document.getElementById("deleteNoteBtn");
     var noteCount = localStorage.getItem("noteCount");  
     
-    //REMINDER
-    var remCount = localStorage.getItem("remCount");
+    
     
     //LISTS
     var listInput = document.getElementById("listInput");
@@ -30,9 +77,6 @@ $(document).ready(function () {
         noteCount = 0;
     }
     
-    if (remCount === null) {
-        remCount = 0;
-    }
     
     if (listCount === null) {
         noteCount = 0;
@@ -298,48 +342,6 @@ $(document).ready(function () {
         } else {
             localStorage.setItem(numSlctr + "checked", "false");
         }
-    }
-    
-    
-    function addReminder() {
-        alert("Add functions runs");
-        remCount++;
-
-        var date = document.getElementById("date").value,
-            time = document.getElementById("time").value,
-            title = document.getElementById("title").value,
-            message = document.getElementById("message").value,
-            id = remCount;
-        if(date == "" || time == "" || title == "" || message == "") {
-            alert("Please enter all details");
-            return;
-        }
-
-        //generate a time to post notification
-        var slctdTime = new Date((date + " " + time).replace(/-/g, "/")).getTime();
-        slctdTime = new Date(slctdTime);
-
-        //setup notification    
-        cordova.plugins.notification.local.schedule({ 
-            id: id,
-            title: title,
-            text: message,
-            at: slctdTime
-        });
-
-        //Display new reminder
-        $("<div />")
-            .attr("id", "rem" + remCount + "container")
-            .text(id + ": " + title + " " + message + " " + slctdTime)
-            .appendTo("#remContainer");
-        
-        //Store info in local storage
-        localStorage.setItem("RemCount", id);
-        localStorage.setItem("Rem" + id + "title", title);
-        localStorage.setItem("Rem" + id + "message", message);
-        localStorage.setItem("Rem" + id + "date", slctdTime);
-        
-
     }
     
     
