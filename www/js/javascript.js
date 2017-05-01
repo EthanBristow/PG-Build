@@ -3,7 +3,10 @@ function onLoad() {
 }
 
 function onDeviceReady() {
-    alert("deviceready");    
+    alert("deviceready");
+    // cordova.plugins.notification.local is now available
+    var addReminderBtn = document.getElementById("addReminderBtn");
+    addReminderBtn.addEventListener("click", addReminder);
 }
 
 $(document).ready(function () {
@@ -316,7 +319,27 @@ $(document).ready(function () {
     
 });
 
-
+function addReminder() {
+    alert("Add functions runs");
+    
+    //
+    //generate a time to post notification
+    //
+    var currentTime = new Date().getTime(); //current time
+    var notificationTime = new Date(currentTime + 1000); //delayed time  - add 1 second
+    			
+    //
+    //setup notification
+    //
+    
+    cordova.plugins.notification.local.schedule({ 
+    	id: 1,
+        title: "Hey you",
+        text: "This is an example notification",
+        at: notificationTime
+   	});
+    
+}
 
 /*document.addEventListener('deviceready', function () {
     alert("deviceready");
