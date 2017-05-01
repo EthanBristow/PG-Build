@@ -322,20 +322,21 @@ $(document).ready(function () {
 function addReminder() {
     alert("Add functions runs");
     
-    //
-    //generate a time to post notification
-    //
-    var currentTime = new Date().getTime(); //current time
-    var notificationTime = new Date(currentTime + 1000); //delayed time  - add 1 second
-    			
-    //
-    //setup notification
-    //
+    var date = document.getElementById("date").value,
+        time = document.getElementById("time").value,
+        title = document.getElementById("title").value,
+        message = document.getElementById("message").value;
     
+    //generate a time to post notification
+    var slctdTime = new Date(time); //current time
+    var notificationTime = new Date(date + " " + slctdTime);
+    			
+
+    //setup notification    
     cordova.plugins.notification.local.schedule({ 
     	id: 1,
-        title: "Hey you",
-        text: "This is an example notification",
+        title: "Title test",
+        text: "Message text",
         at: notificationTime
    	});
     
