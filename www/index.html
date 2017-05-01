@@ -38,9 +38,10 @@
                         <button id="editNoteBtn" data-role="button">Edit</button>
                         <button id="deleteNoteBtn" data-role="button">Delete</button>
                     </div>
-                </div>    
+                </div> 
+                
             </div>
-            
+
             <div id="global-footer" data-role="footer" data-position="fixed" data-theme="a" data-id="main-footer" class="ui-bar">
                 <div id="footer-container">
                     <button id="notespagebtn" class="notespagebtn" data-role="none">Notes</button>
@@ -59,17 +60,26 @@
                 <h1>Reminders</h1>
             </div>
             
-            <div data-role="main" class="ui-content">
-                <p>
-                    Enter title and message for the reminder:
-                    <input type="text" id="title" placeholder="Title" />
-                    <input type="text" id="message" placeholder="Message" />
-                    Enter date and time to trigger reminder:
-                    <input type="date" id="date" placeholder="Change this to required format"/>
-                    <input type="time" id="time" placeholder="Change this to required format"/>
-                    <button id="addReminderBtn" data-role="button">Add Reminder</button>
-                </p>
+            <div data-role="content">
+                <div id="addContainer">
+                    <p>
+                        Enter title and message for the reminder:
+                        <input type="text" id="title" placeholder="Title" />
+                        <input type="text" id="message" placeholder="Message" />
+                        Enter date and time to trigger reminder:
+                        <input type="date" id="date" placeholder="Change this to required format"/>
+                        <input type="time" id="time" placeholder="Change this to required format"/>
+                        <button id="addReminderBtn" data-role="button">Add Reminder</button>
+                    </p>
+                </div>
+                
+                <div id="remContainer">
+            
+                </div>
+                
             </div>
+    
+            
             
             <div id="global-footer" data-role="footer" data-position="fixed" data-theme="a" data-id="main-footer" class="ui-bar">
                 <div id="footer-container">

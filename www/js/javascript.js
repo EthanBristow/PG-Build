@@ -19,17 +19,19 @@ $(document).ready(function () {
     var noteCount = localStorage.getItem("noteCount");  
     
     //REMINDER
-    
+    var remCount = localStorage.getItem("remCount");
     
     //LISTS
     var listInput = document.getElementById("listInput");
     var listCount = localStorage.getItem("listCount");
 
     
-
-    
     if (noteCount === null) {
         noteCount = 0;
+    }
+    
+    if (remCount === null) {
+        remCount = 0;
     }
     
     if (listCount === null) {
@@ -299,6 +301,46 @@ $(document).ready(function () {
     }
     
     
+    function addReminder() {
+        alert("Add functions runs");
+        remCount++;
+
+        var date = document.getElementById("date").value,
+            time = document.getElementById("time").value,
+            title = document.getElementById("title").value,
+            message = document.getElementById("message").value,
+            id = remCount;
+        if(date == "" || time == "" || title == "" || message == "") {
+            alert("Please enter all details");
+            return;
+        }
+
+        //generate a time to post notification
+        var slctdTime = new Date((date + " " + time).replace(/-/g, "/")).getTime();
+        slctdTime = new Date(slctdTime);
+
+        //setup notification    
+        cordova.plugins.notification.local.schedule({ 
+            id: id,
+            title: title,
+            text: message,
+            at: slctdTime
+        });
+
+        //Display new reminder
+        $("<div />")
+            .attr("id", "rem" + remCount + "container")
+            .text(id + ": " + title + " " + message + " " + slctdTime)
+            .appendTo("#remContainer");
+        
+        //Store info in local storage
+        localStorage.setItem("RemCount", id);
+        localStorage.setItem("Rem" + id + "title", title);
+        localStorage.setItem("Rem" + id + "message", message);
+        localStorage.setItem("Rem" + id + "date", slctdTime);
+        
+
+    }
     
     
 
@@ -306,7 +348,6 @@ $(document).ready(function () {
     //EVENT LISTERNERS
     //Notes
     addnotebtn.addEventListener("click", addNotes);
-    /*noteNumberInput.addEventListener("keyup", validate);*/
     editNoteBtn.addEventListener("click", editNotes);
     deleteNoteBtn.addEventListener("click", deleteNotes);
     
@@ -319,32 +360,6 @@ $(document).ready(function () {
     
 });
 
-function addReminder() {
-    alert("Add functions runs");
-    
-    var date = document.getElementById("date").value,
-        time = document.getElementById("time").value,
-        title = document.getElementById("title").value,
-        message = document.getElementById("message").value;
-    
-    if(date == "" || time == "" || title == "" || message == "") {
-        alert("Please enter all details");
-        return;
-    }
-    			
-    //generate a time to post notification
-    var slctdTime = new Date((date + " " + time).replace(/-/g, "/")).getTime();
-    slctdTime = new Date(slctdTime);
-
-    //setup notification    
-    cordova.plugins.notification.local.schedule({ 
-    	id: 1,
-        title: title,
-        text: message,
-        at: slctdTime
-   	});
-    
-}
 
 /*document.addEventListener('deviceready', function () {
     alert("deviceready");
