@@ -22,7 +22,7 @@ function onDeviceReady() {
     }
     
     //Call display reminder function
-    displayReminder();
+    deleteReminder();
     
     //Add a reminder
     function addReminder() {
