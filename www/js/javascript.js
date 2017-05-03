@@ -130,7 +130,7 @@ function onDeviceReady() {
     }
     
     // Display reminder
-    function displayReminder {
+    function displayReminder() {
         for (var i = 1; i < +localStorage.remCount + 1; i++) {
             
             var remTitle = localStorage.getItem("Rem" + i + "title"),
