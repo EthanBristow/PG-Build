@@ -22,7 +22,7 @@ function onDeviceReady() {
     }
     
     //Call display reminder function
-    deleteReminder();
+    displayReminder();
     
     //Add a reminder
     function addReminder() {
@@ -131,6 +131,7 @@ function onDeviceReady() {
     
     // Display reminder
     function displayReminder() {
+        alert("display runs");
         for (var i = 1; i < +localStorage.remCount + 1; i++) {
             
             var remTitle = localStorage.getItem("Rem" + i + "title"),
