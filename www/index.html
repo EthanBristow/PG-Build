@@ -24,7 +24,7 @@
             <div data-role="content">
                 <div id="addContainer">
                     <textarea id="noteInput" class="textarea" placeholder="Add your note here, then click 'Add Note'." rows="10" cols="50"></textarea>
-                    <button id="addNoteBtn" data-role="button">Add Note</button>
+                    <button id="addNoteBtn" data-role="button" data-theme="b">Add Note</button>
                 </div>
                 
                 <div id="displayContainer">
@@ -35,8 +35,8 @@
                     <p>(After deleting a note, you can edit that note number if you'd like to add another into the same position!)</p>
                     <textarea id="noteEditInput" placeholder="Type here, then click edit to overwrite the note of the number you've selected."></textarea>
                     <div id="controlButtons">
-                        <button id="editNoteBtn" data-role="button">Edit</button>
-                        <button id="deleteNoteBtn" data-role="button">Delete</button>
+                        <button id="editNoteBtn" data-role="button" data-theme="b">Edit</button>
+                        <button id="deleteNoteBtn" data-role="button" data-theme="b">Delete</button>
                     </div>
                 </div> 
                 
@@ -69,15 +69,15 @@
                         Enter date and time to trigger reminder:
                         <input type="date" id="date" placeholder="Date"/>
                         <input type="time" id="time" placeholder="Time"/>
-                        <button id="addRemBtn" data-role="button">Add Reminder</button>
+                        <button id="addRemBtn" data-role="button" data-theme="b">Add Reminder</button>
                     </p>
                 </div>
                 
                 <div id="controlContainer">
                     <textarea id="remIdInput" placeholder="Reminder ID"></textarea>
                     <p>(Enter the reminder ID into this box, fill in the table above and click 'Edit Reminder' to update a scheduled reminder. To cancel a reminder, simply enter the ID and then click 'Cancel Reminder'.)</p>
-                    <button id="editRemBtn" data-role="button">Edit Reminder</button>
-                    <button id="deleteRemBtn" data-role="button">Cancel Reminder</button>
+                    <button id="editRemBtn" data-role="button" data-theme="b">Edit Reminder</button>
+                    <button id="deleteRemBtn" data-role="button" data-theme="b">Cancel Reminder</button>
                 </div>
                 
                 <div id="pendingReminders">
@@ -112,7 +112,7 @@
                 
                     <div id="listContainer">
                         <form id="listForm">
-                            <input type="submit" value="Add">
+                            <input type="submit" value="Add" data-theme="b">
                             <input id="listInput" class="textarea" placeholder="Input your list item here.">
                             <div id="checkboxContainer">
                             </div>

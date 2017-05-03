@@ -21,6 +21,9 @@ function onDeviceReady() {
         remCount = 0;
     }
     
+    //Call display reminder function
+    displayReminder();
+    
     //Add a reminder
     function addReminder() {
 
@@ -124,6 +127,25 @@ function onDeviceReady() {
         
         alert("Reminder cancelled.");
         
+    }
+    
+    // Display reminder
+    function displayReminder {
+        for (var i = 1; i < +localStorage.remCount + 1; i++) {
+            
+            var remTitle = localStorage.getItem("Rem" + i + "title"),
+                remMessage = localStorage.getItem("Rem" + i + "message"),
+                remDate = localStorage.getItem("Rem" + i + "date");
+            
+            if (remTitle !== null) {
+                $("<div />")
+                .attr("id", "rem" + i + "container")
+                .attr("class", "reminder")
+                .text("[ID: " + i + "] - " + remTitle + ", " + remMessage + ", " + remDate)
+                .appendTo("#remContainer");
+                  
+            }
+        }
     }
     
 } //Device ready
