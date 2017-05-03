@@ -133,19 +133,21 @@ function onDeviceReady() {
     function displayReminder() {
         alert("display runs");
         for (var i = 1; i < +localStorage.remCount + 1; i++) {
-            
-            var remTitle = localStorage.getItem("Rem" + i + "title"),
+            alert("for works");
+            var remId = localStorage.getItem("remCount" + i),
+                remTitle = localStorage.getItem("Rem" + i + "title"),
                 remMessage = localStorage.getItem("Rem" + i + "message"),
-                remDate = localStorage.getItem("Rem" + i + "date");
+                remDate = localStorage.getItem("Rem" + i + "date"),
+                reminder = "[ID: " + i + "] - " + remTitle + ", " + remMessage + ", " + remDate;
             
-            if (remTitle !== null) {
-                $("<div />")
-                .attr("id", "rem" + i + "container")
-                .attr("class", "reminder")
-                .text("[ID: " + i + "] - " + remTitle + ", " + remMessage + ", " + remDate)
-                .appendTo("#remContainer");
-                  
+            if (remId !== null) {
+                alert("if works");
+                var display = document.createElement("div");
+                document.getElementById("remContainer").appendChild(display);
+                display.id = "rem" + i + "container";
+                $("#rem" + 1 + "container").text(reminder);        
             }
+
         }
     }
     
